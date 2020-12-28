@@ -70,6 +70,6 @@ int main()
     if (answer == -1)
         cout << "do not find sub string in root string";
     else
-        cout << "this index we find sub string in root string is: " << answer;
+        cout << "i'm found " << answer <<" times sub string in root string" << endl;
     return 0;
 }
