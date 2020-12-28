@@ -1,21 +1,14 @@
 #include <bits/stdc++.h>
-
 using namespace std;
-
-
 int BMH(string root, string sub)
 {
     int n = root.length(), m = sub.length(), dem = 0;
-
     map < char,int> bad_table;
     for(int i=0; i<m; i++) bad_table[sub[i]] = 0;
-
     /*
         i'm try Construct bad match table in this input i have by formular : value = len of sub string - index - 1.
     */
-
-    for(int i=0; i<m-1; i++)
-    {
+    for(int i=0; i<m-1; i++){
         int value = m - i - 1;
         bad_table[sub[i]] = value;
     }
@@ -26,7 +19,6 @@ int BMH(string root, string sub)
 //        cout << "charactor: "<<it->first << " value: " <<it->second <<endl;
 //
 //    }
-
     int loop = m - 1;
     for( ; loop <n ; )
     {
@@ -40,10 +32,11 @@ int BMH(string root, string sub)
             i found sub string in root string then we counts by one.
             if u need to find sub string in root u can return number of index of sub string.
         */
-
-        if (idx == m)  dem ++;
-
-
+        if (idx == m)
+        {
+            dem ++;
+           // return loop - m + 1;
+        }
         int curr = loop - idx;
 //        cout <<"loop: " <<loop <<" char root: "<<root[curr] << " char sub: " << sub[m - idx - 1] <<" not match " <<endl;
         /*
@@ -53,7 +46,6 @@ int BMH(string root, string sub)
             loop += m -1;
         else
             loop += bad_table[root[curr]];
-
     }
     return dem;
 }
@@ -62,14 +54,16 @@ int BMH(string root, string sub)
 int main()
 {
 
-//    string root="tambaymothaitamkbonnamsautamchinmuoibay";
-//    string sub="bay";
-    string root = "CGTGCCTACTTACTTACTTACTTACGCGAA";
-    string sub = "CTTACTTAC";
+    string root="cong hoa xa hoi hoa xa hoa viet nam ";
+    string sub="hoa";
+//    string root="hoahoahoahoahoahoa";
+//    string sub="hoa";
+//    string root = "CGTGCCTACTTACTTACTTACTTACGCGAA";
+//    string sub = "CTTACTTAC";
     int answer = BMH(root, sub);
     if (answer == -1)
         cout << "do not find sub string in root string";
     else
-        cout << "i'm found " << answer <<" times sub string in root string" << endl;
+        cout << "i'm found " << answer <<" times of sub string in root string" << endl;
     return 0;
 }
